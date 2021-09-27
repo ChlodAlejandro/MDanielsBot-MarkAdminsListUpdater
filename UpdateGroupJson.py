@@ -69,10 +69,11 @@ def sortkeys(key: str) -> str:
         "global-renamer": "GRe",
         "global-rollbacker": "GRb",
         "templateeditor": "TE",
-        "OTRS-member": "OTRS",
+        "vrt-permissions": "OTRS",
         "steward": "S"
     }
     return sortkeyDict[key]
+
 
 combinedJsDataPage = pywikibot.Page(site, "User:Zoomiebot/markAdmins-Data.js")
 
@@ -81,7 +82,7 @@ localGroups = ["abusefilter", "abusefilter-helper", "accountcreator",
                "interface-admin", "massmessage-sender", "oversight",
                "sysop", "templateeditor"]
 extraLocalGroups = ["autoreviewer", "patroller", "reviewer", "rollbacker"]
-globalGroups = ["OTRS-member", "steward", "global-rollbacker"]
+globalGroups = ["vrt-permissions", "steward", "global-rollbacker"]
 metaGroups = ["global-renamer"]
 arbcomJson = pywikibot.Page(site, "User:AmoryBot/crathighlighter.js/arbcom.json").get()
 arbcom_members = json.loads(arbcomJson)
