@@ -142,7 +142,7 @@ pageBottom = ");"
 newText = pageTop + outputJson + pageBottom
 oldJspage = combinedJsDataPage.get()
 
-if newText != oldJspage or outputJson != oldJsonpage:
+if newText != oldJspage:
     print(datetime.now(timezone.utc).strftime("%b %d %Y %H:%M:%S.%f")
           + " -- Updated!", flush=True)
     combinedJsDataPage.put(newText, "Update markadmins data")
