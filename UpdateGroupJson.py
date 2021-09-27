@@ -69,22 +69,19 @@ def sortkeys(key: str) -> str:
         "global-renamer": "GRe",
         "global-rollbacker": "GRb",
         "templateeditor": "TE",
-        "otrs-member": "OTRS",
+        "vrt-member": "VRT",
         "steward": "S"
     }
     return sortkeyDict[key]
 
-
-combinedJsDataPage = pywikibot.Page(site, "User:MDanielsBot/markAdmins-Data.js")
-combinedJsonDataPage = pywikibot.Page(site, "User:MDanielsBot/markAdmins-Data.json")
-
+combinedJsDataPage = pywikibot.Page(site, "User:Zoomiebot/markAdmins-Data.js")
 
 localGroups = ["abusefilter", "abusefilter-helper", "accountcreator",
                "bureaucrat", "checkuser", "extendedmover", "filemover",
                "interface-admin", "massmessage-sender", "oversight",
                "sysop", "templateeditor"]
 extraLocalGroups = ["autoreviewer", "patroller", "reviewer", "rollbacker"]
-globalGroups = ["otrs-member", "steward", "global-rollbacker"]
+globalGroups = ["vrt-member", "steward", "global-rollbacker"]
 metaGroups = ["global-renamer"]
 arbcomJson = pywikibot.Page(site, "User:AmoryBot/crathighlighter.js/arbcom.json").get()
 arbcom_members = json.loads(arbcomJson)
@@ -143,13 +140,11 @@ pageBottom = ");"
 
 newText = pageTop + outputJson + pageBottom
 oldJspage = combinedJsDataPage.get()
-oldJsonpage = combinedJsonDataPage.get()
 
 if newText != oldJspage or outputJson != oldJsonpage:
     print(datetime.now(timezone.utc).strftime("%b %d %Y %H:%M:%S.%f")
           + " -- Updated!", flush=True)
     combinedJsDataPage.put(newText, "Update markadmins data")
-    combinedJsonDataPage.put(outputJson, "Update markadmins data")
 else:
     print(datetime.now(timezone.utc).strftime("%b %d %Y %H:%M:%S.%f")
           + " -- No changes", flush=True)
